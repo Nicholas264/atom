@@ -93,11 +93,7 @@ class MenuManager
   # added menu items.
   add: (items) ->
     items = _.deepClone(items)
-
-    for item in items
-      continue unless item.label? # TODO: Should we emit a warning here?
-      @merge(@template, item)
-
+    @merge(@template, item) for item in items
     @update()
     new Disposable => @remove(items)
 
